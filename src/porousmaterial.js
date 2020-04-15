@@ -22,6 +22,7 @@ function voidFraction(cycles = 1000, probeAtom = 'Gm') {
   const cell = this.cell;
 
   let hitPromises = [];
+  // eslint-disable-next-line no-unused-vars
   async.times(cycles, function (n, next) {
     hitPromises.push(randomPointIntersect(cell, spheres, probeAtom));
   });
