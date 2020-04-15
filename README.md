@@ -15,6 +15,7 @@ Getting basic structural descriptors for porous materials.
 - using $\sigma/2$ from UFF for the radii
 - pore volumes are the geometric ones with Monte Carlo integration
 - Conolly surface area is maybe next
+- results from tests roughly checked against daniele's paper/zeo++/iRASPA
 
 ## Usage
 
