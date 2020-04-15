@@ -33,7 +33,7 @@ export class Sphere {
   }
 }
 
-export function randomPointIntersect(cell, spheres, probeAtom = 'He') {
+export function randomPointIntersect(cell, spheres, probeAtom = 'Gm') {
   const randomPoint = multiply(
     [Math.random(), Math.random(), Math.random()],
     cell,

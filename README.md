@@ -10,17 +10,23 @@ Getting basic structural descriptors for porous materials.
 
 `$ npm i poreprober`
 
-## Notes 
+## Notes
 
-- Using three.js for the probing. We could easily write it ourselves but in this way we can later also make nice renders of the simulation. 
+- using $\sigma/2$ from UFF for the radii
+- pore volumes are the geometric ones with Monte Carlo integration
+- Conolly surface area is maybe next
 
 ## Usage
 
 ```js
-import library from 'poreprober';
+import PoreMat from 'poreprober';
 
-const result = library(args);
-// result is ...
+let mof = PoreMat(<ciffile>);
+
+const gmVoidFraction = mof.voidFraction(); // takes cycles and probe molecules
+const gmPoreVolume = mof.poreVolume(); // takes cycles and probe molecules, returns math.js unit
+const density = mof.density // returns math.js unit
+const volume = mof.volume // returns math.js unit
 ```
 
 ## [API Documentation](https://cheminfo.github.io/poreprober/)
