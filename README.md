@@ -10,6 +10,10 @@ Getting basic structural descriptors for porous materials.
 
 `$ npm i poreprober`
 
+## Notes 
+
+- Using three.js for the probing. We could easily write it ourselves but in this way we can later also make nice renders of the simulation. 
+
 ## Usage
 
 ```js
