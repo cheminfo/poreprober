@@ -15,6 +15,7 @@ export class PoreMat {
     const cif = Atoms.readCif(cifText);
     const atoms = cif[Object.keys(cif)[0]];
     this.cell = atoms.get_cell();
+
     this.volume = dot(cross(this.cell[0], this.cell[1]), this.cell[2]);
 
     this.symbols = atoms.get_chemical_symbols();

@@ -6,16 +6,28 @@
 
 Getting basic structural descriptors for porous materials.
 
+The current version implements the overlapping spheres (OSA) approach, using atomic radii from the universal force field (UFF).
+
+The calculated descriptors are defined as follows:
+
+- The porosity we return is the fraction between the void volume and the total volume
+  <img src="https://tex.cheminfo.org/?tex=%5CPhi_%5Cmathrm%7Bvoid%7D%20%3D%20%5Cfrac%7BV_%5Cmathrm%7Bvoid%7D%7D%7BV_%5Cmathrm%7Btotal%7D%7D%20%20%20"/>
+
+with the total volume given by the cell vectors
+<img src="https://tex.cheminfo.org/?tex=V_%5Cmathrm%7Btotal%7D%20%3D%20%5Cmathbf%7Ba%7D%5Ccdot%20%5Cleft(%5Cmathbf%7Bb%7D%20%5Ctimes%20%5Cmathbf%7Bc%7D%5Cright)"/>
+
+and the void volume as 
+
+<img src="https://tex.cheminfo.org/?tex=V_%5Cmathrm%7Bvoid%7D%20%3D%20V_%5Cmathrm%7Btotal%7D%20-%20V_%5Cmathrm%7Bocc%7D"/>
+
+where the occupied volume is given as the sum of the radii of the atoms, substracting overlaps between the atoms and periodic boundary conditions (PBC)
+
+<img src="https://tex.cheminfo.org/?tex=V_%5Cmathrm%7Bocc%7D%20%3D%20%5Csum_%7Bi%7D%5EN%20V_%5Cmathrm%7BUFF%2Ci%7D%20-%20%5Csum_%7Bi%2C%20j%3Ei%7D%5EN%20V_%7Bi%2Cj%2C%5Ctext%7BUFF%7D%2C%20%5Ctext%7Boverlap%7D%7D"/>
+
+
 ## Installation
 
 `$ npm i poreprober`
-
-## Notes
-
-- using $\sigma/2$ from UFF for the radii
-- pore volumes are the geometric ones with Monte Carlo integration
-- Conolly surface area is maybe next
-- results from tests roughly checked against daniele's paper/zeo++/iRASPA
 
 ## Usage
 
@@ -24,8 +36,6 @@ import PoreMat from 'poreprober';
 
 let mof = PoreMat(<ciffile>);
 
-const gmVoidFraction = mof.voidFraction(); // takes cycles and probe molecules
-const gmPoreVolume = mof.poreVolume(); // takes cycles and probe molecules, returns math.js unit
 const density = mof.density // returns math.js unit
 const volume = mof.volume // returns math.js unit
 ```
