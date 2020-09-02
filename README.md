@@ -15,6 +15,7 @@ The calculated descriptors are defined as follows:
   <img src="https://tex.cheminfo.org/?tex=%5CPhi_%5Cmathrm%7Bvoid%7D%20%3D%20%5Cfrac%7BV_%5Cmathrm%7Bvoid%7D%7D%7BV_%5Cmathrm%7Btotal%7D%7D%20%20%20"/>
 
 with the total volume given by the cell vectors
+
 <img src="https://tex.cheminfo.org/?tex=V_%5Cmathrm%7Btotal%7D%20%3D%20%5Cmathbf%7Ba%7D%5Ccdot%20%5Cleft(%5Cmathbf%7Bb%7D%20%5Ctimes%20%5Cmathbf%7Bc%7D%5Cright)"/>
 
 and the void volume as
