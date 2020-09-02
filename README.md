@@ -11,6 +11,7 @@ The current version implements the overlapping spheres (OSA) approach, using ato
 The calculated descriptors are defined as follows:
 
 - The porosity we return is the fraction between the void volume and the total volume
+
   <img src="https://tex.cheminfo.org/?tex=%5CPhi_%5Cmathrm%7Bvoid%7D%20%3D%20%5Cfrac%7BV_%5Cmathrm%7Bvoid%7D%7D%7BV_%5Cmathrm%7Btotal%7D%7D%20%20%20"/>
 
 with the total volume given by the cell vectors
@@ -35,9 +36,9 @@ import PoreMat from 'poreprober';
 
 let mof = PoreMat(<ciffile>);
 
-const density = mof.density
-const volume = mof.volume
-const porosity = mof.porosity
+const density = mof.density;
+const volume = mof.volume;
+const porosity = mof.porosity;
 ```
 
 ## [API Documentation](https://cheminfo.github.io/poreprober/)
