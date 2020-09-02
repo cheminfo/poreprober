@@ -5,6 +5,7 @@ import { dot, cross } from 'mathjs';
 
 import { atomicMasses } from './data/atomicMasses';
 import { uffRadii } from './data/uffRadii';
+import { computeOverlapVolume } from './osa/osa';
 
 const radiiDict = uffRadii;
 const massDict = atomicMasses;
@@ -48,9 +49,16 @@ Object.defineProperty(PoreMat.prototype, 'atomsVolume', {
   get: function () {
     let occupiedVolume = 0;
     for (let [symbol, count] of Object.entries(this.elementCounts)) {
-      occupiedVolume += (4 / 3) * this.radii[symbol] ** 3 * count;
+      occupiedVolume += (4 / 3) * Math.PI * this.radii[symbol] ** 3 * count;
     }
     return occupiedVolume; // A^3
+  },
+});
+
+Object.defineProperty(PoreMat.prototype, 'overlapVolume', {
+  // This is the atomsVolume - overlapVolume
+  get: function () {
+    return computeOverlapVolume(this.positions, this.symbols, this.cell); // A^3
   },
 });
 
@@ -69,6 +77,6 @@ Object.defineProperty(PoreMat.prototype, 'voidVolume', {
 
 Object.defineProperty(PoreMat.prototype, 'porosity', {
   get: function () {
-    return this.occupiedVolume / this.volume; // unitless
+    return this.voidVolume / this.volume; // unitless
   },
 });

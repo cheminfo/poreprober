@@ -16,14 +16,13 @@ The calculated descriptors are defined as follows:
 with the total volume given by the cell vectors
 <img src="https://tex.cheminfo.org/?tex=V_%5Cmathrm%7Btotal%7D%20%3D%20%5Cmathbf%7Ba%7D%5Ccdot%20%5Cleft(%5Cmathbf%7Bb%7D%20%5Ctimes%20%5Cmathbf%7Bc%7D%5Cright)"/>
 
-and the void volume as 
+and the void volume as
 
 <img src="https://tex.cheminfo.org/?tex=V_%5Cmathrm%7Bvoid%7D%20%3D%20V_%5Cmathrm%7Btotal%7D%20-%20V_%5Cmathrm%7Bocc%7D"/>
 
 where the occupied volume is given as the sum of the radii of the atoms, substracting overlaps between the atoms and periodic boundary conditions (PBC)
 
 <img src="https://tex.cheminfo.org/?tex=V_%5Cmathrm%7Bocc%7D%20%3D%20%5Csum_%7Bi%7D%5EN%20V_%5Cmathrm%7BUFF%2Ci%7D%20-%20%5Csum_%7Bi%2C%20j%3Ei%7D%5EN%20V_%7Bi%2Cj%2C%5Ctext%7BUFF%7D%2C%20%5Ctext%7Boverlap%7D%7D"/>
-
 
 ## Installation
 
@@ -36,8 +35,9 @@ import PoreMat from 'poreprober';
 
 let mof = PoreMat(<ciffile>);
 
-const density = mof.density // returns math.js unit
-const volume = mof.volume // returns math.js unit
+const density = mof.density
+const volume = mof.volume
+const porosity = mof.porosity
 ```
 
 ## [API Documentation](https://cheminfo.github.io/poreprober/)

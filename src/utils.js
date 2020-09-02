@@ -2,15 +2,23 @@ import { distance } from 'mathjs';
 
 import { covalentRadii } from './data/covalentRadii';
 
+function handleOverlap(r1, r2) {
+  let r = Math.min(r1, r2);
+  return (4 / 3) * Math.PI * r ** 3;
+}
 export function overlap(r1, r2, d) {
-  return (
-    (Math.PI *
-      (d ** 4 -
-        6 * d ** 2 * (r1 ** 2 + r2 ** 2) +
-        8 * d * (r1 ** 3 + r2 ** 3) -
-        3 * (r1 ** 2 - r2 ** 2) ** 2)) /
-    (12 * d)
-  );
+  if (d > 0.0001) {
+    return (
+      (Math.PI *
+        (d ** 4 -
+          6 * d ** 2 * (r1 ** 2 + r2 ** 2) +
+          8 * d * (r1 ** 3 + r2 ** 3) -
+          3 * (r1 ** 2 - r2 ** 2) ** 2)) /
+      (12 * d)
+    );
+  } else {
+    return handleOverlap(r1, r2);
+  }
 }
 
 export function pbcDistance(pointA, pointB, cellvectors) {
@@ -33,8 +41,8 @@ export function pbcDistance(pointA, pointB, cellvectors) {
   return measuredDistance;
 }
 
-function doOverlap(r1, r2, d, threshold = 0.01) {
-  return r1 + r2 > d + threshold;
+function doOverlap(r1, r2, d, threshold = 0.001) {
+  return d + threshold < r1 + r2;
 }
 
 export function areBound(atomA, atomB, d) {
