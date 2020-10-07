@@ -1,6 +1,6 @@
 {
   "name": "poreprober",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Getting basic structural descriptors for porous materials",
   "main": "lib/index.js",
   "module": "src/index.js",
