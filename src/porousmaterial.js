@@ -1,5 +1,3 @@
-import { readFileSync } from 'fs';
-
 import { Atoms } from 'crystcif-parse';
 import { dot, cross } from 'mathjs';
 
@@ -11,8 +9,7 @@ const radiiDict = uffRadii;
 const massDict = atomicMasses;
 
 export class PoreMat {
-  constructor(cifFile) {
-    const cifText = readFileSync(cifFile, 'utf8').toString();
+  constructor(cifText) {
     const cif = Atoms.readCif(cifText);
     const atoms = cif[Object.keys(cif)[0]];
     this.cell = atoms.get_cell();

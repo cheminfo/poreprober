@@ -1,9 +1,14 @@
+import { readFileSync } from 'fs';
 import { join } from 'path';
 
 import { PoreMat } from '../porousmaterial';
 
 describe('test PoreMat', () => {
-  const cubtc = new PoreMat(join(__dirname, '../__tests__/data/cubtc.cif'));
+  const cif = readFileSync(
+    join(__dirname, '../__tests__/data/cubtc.cif'),
+    'utf8',
+  ).toString();
+  const cubtc = new PoreMat(cif);
   // const comof74 = new PoreMat(
   //   join(__dirname, '../__tests__/data/OXIDIZED_phase_1.cif'),
   // );
