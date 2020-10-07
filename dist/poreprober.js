@@ -5,10 +5,10 @@
  * @license MIT
  */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('fs')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'fs'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.PoreProber = {}, global.fs));
-}(this, (function (exports, fs) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.PoreProber = {}));
+}(this, (function (exports) { 'use strict';
 
 	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -198607,8 +198607,7 @@
 	const radiiDict = uffRadii;
 	const massDict = atomicMasses;
 	class PoreMat {
-	  constructor(cifFile) {
-	    const cifText = fs.readFileSync(cifFile, 'utf8').toString();
+	  constructor(cifText) {
 	    const cif = Atoms_1$1.readCif(cifText);
 	    const atoms = cif[Object.keys(cif)[0]];
 	    this.cell = atoms.get_cell();
