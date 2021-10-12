@@ -43,7 +43,7 @@ export class PoreMat {
 }
 
 Object.defineProperty(PoreMat.prototype, 'atomsVolume', {
-  get: function () {
+  get() {
     let occupiedVolume = 0;
     for (let [symbol, count] of Object.entries(this.elementCounts)) {
       occupiedVolume += (4 / 3) * Math.PI * this.radii[symbol] ** 3 * count;
@@ -54,26 +54,26 @@ Object.defineProperty(PoreMat.prototype, 'atomsVolume', {
 
 Object.defineProperty(PoreMat.prototype, 'overlapVolume', {
   // This is the atomsVolume - overlapVolume
-  get: function () {
+  get() {
     return computeOverlapVolume(this.positions, this.symbols, this.cell); // A^3
   },
 });
 
 Object.defineProperty(PoreMat.prototype, 'occupiedVolume', {
   // This is the atomsVolume - overlapVolume
-  get: function () {
+  get() {
     return this.atomsVolume - this.overlapVolume; // A^3
   },
 });
 
 Object.defineProperty(PoreMat.prototype, 'voidVolume', {
-  get: function () {
+  get() {
     return this.volume - this.occupiedVolume; // A^3
   },
 });
 
 Object.defineProperty(PoreMat.prototype, 'porosity', {
-  get: function () {
+  get() {
     return this.voidVolume / this.volume; // unitless
   },
 });

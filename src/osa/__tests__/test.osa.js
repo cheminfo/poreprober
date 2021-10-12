@@ -13,7 +13,7 @@ describe('test OSA', () => {
       [1, 0, 0],
     ];
     let ov = computeOverlapVolume(positions, atoms, cell);
-    expect(ov).toStrictEqual(0);
+    expect(ov).toBe(0);
 
     // overlapping atoms
     atoms = ['H', 'H'];
